@@ -1,0 +1,178 @@
+/* 
+ * PROJECT: GROVER'S GYM ENTERPRISE 
+ * AGENCY: TOP-TIER DIGITAL 
+ * TONE: DARK LUXURY, ELITE, MINIMAL
+ */
+
+:root {
+    --color-bg: #050505;
+    --color-surface: #121212;
+    --color-surface-2: #1e1e1e;
+    --color-text-main: #e0e0e0;
+    --color-text-muted: #888888;
+    --color-gold: #D4AF37; /* Champagne Gold */
+    --color-gold-dim: #997b2f;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+    --spacing-container: 1400px;
+    --transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* RESET & BASE */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text-main);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
+a { text-decoration: none; color: inherit; transition: var(--transition-slow); }
+img { max-width: 100%; display: block; }
+
+/* UTILITIES */
+.container { max-width: var(--spacing-container); margin: 0 auto; padding: 0 40px; }
+.text-gold { color: var(--color-gold); }
+.btn-gold {
+    display: inline-block;
+    padding: 16px 32px;
+    border: 1px solid var(--color-gold);
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-gold::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 0; height: 100%;
+    background: var(--color-gold);
+    z-index: -1;
+    transition: var(--transition-slow);
+}
+.btn-gold:hover::after { width: 100%; }
+.btn-gold:hover { color: var(--color-bg); }
+
+/* --- MEGA MENU NAVIGATION --- */
+header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 1000;
+    background: rgba(5, 5, 5, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+.brand-logo { font-family: var(--font-heading); font-size: 24px; font-weight: 700; letter-spacing: 4px; color: #fff; }
+.brand-logo span { color: var(--color-gold); }
+
+.desktop-nav ul { display: flex; list-style: none; gap: 40px; }
+.desktop-nav > ul > li { position: relative; padding: 30px 0; cursor: pointer; }
+.desktop-nav > ul > li > a { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; }
+.desktop-nav > ul > li:hover > a { opacity: 1; color: var(--color-gold); }
+
+/* Mega Menu Dropdown */
+.mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    width: 80vw;
+    background: var(--color-surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-slow);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 40px;
+    gap: 30px;
+}
+.desktop-nav > ul > li:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.mm-col h4 { color: var(--color-gold); font-size: 14px; margin-bottom: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 10px; }
+.mm-col ul { display: flex; flex-direction: column; gap: 10px; }
+.mm-col a { font-size: 13px; color: #aaa; text-transform: none; letter-spacing: 0.5px; display: block; transition: 0.3s; }
+.mm-col a:hover { color: #fff; transform: translateX(5px); }
+
+/* --- HERO SECTIONS --- */
+.hero-section {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, #050505 10%, rgba(5,5,5,0.4) 100%);
+    z-index: 1;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+.hero-super { color: var(--color-gold); font-size: 14px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+.hero-title { font-size: 80px; line-height: 1; margin-bottom: 30px; color: #fff; }
+.hero-sub { font-size: 18px; color: var(--color-text-muted); margin-bottom: 40px; max-width: 600px; }
+
+/* --- CONTENT BLOCKS --- */
+.section-pad { padding: 120px 0; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+
+.feature-card {
+    background: var(--color-surface);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.4s;
+}
+.feature-card:hover { transform: translateY(-10px); border-color: var(--color-gold-dim); }
+.feature-title { font-size: 24px; margin-bottom: 15px; }
+
+/* --- PREMIUM PRODUCT INTEGRATION (NATIVE AD) --- */
+.grooming-integration {
+    background: var(--color-surface-2);
+    border-top: 2px solid var(--color-gold);
+    padding: 80px 0;
+    margin: 80px 0;
+    position: relative;
+}
+.product-showcase {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.prod-tag { background: var(--color-gold); color: #000; padding: 5px 10px; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+.prod-img-mock {
+    width: 100%; height: 400px;
+    background: #000;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid #333;
+}
+
+/* --- FOOTER --- */
+footer { border-top: 1px solid #222; padding: 100px 0 40px; background: #080808; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 80px; }
+.footer-col h5 { color: #fff; margin-bottom: 30px; }
+.footer-link { display: block; color: #666; margin-bottom: 15px; font-size: 13px; }
+.footer-link:hover { color: var(--color-gold); }
